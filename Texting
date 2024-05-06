@@ -1,0 +1,15 @@
+function setOracleAddress(address _oracleAddress) public onlyOwner {
+oracleAddress = _oracleAddress;
+_setChainlinkOracle(_oracleAddress);
+}
+function setJobId(string memory _jobId) public onlyOwner {
+jobId = bytes32(bytes(_jobId));
+}
+function setFeeInJuels(uint256 _feeInJuels) public onlyOwner {
+oracleFee = _feeInJuels;
+}
+function setFeeInHundredthsOfLink(
+uint256 _feeInHundredthsOfLink
+) public onlyOwner {
+setFeeInJuels((_feeInHundredthsOfLink * LINK_DIVISIBILITY) / 100);
+}
